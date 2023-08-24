@@ -1,0 +1,19 @@
+{
+  "name": "demo1",
+  "version": "1.0.0",
+  "description": "primer proyecto node by santi sabbio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santisabb/demo1NodeJS.git"
+  },
+  "author": "Santiago Sabbioni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/santisabb/demo1NodeJS/issues"
+  },
+  "homepage": "https://github.com/santisabb/demo1NodeJS#readme"
+}
