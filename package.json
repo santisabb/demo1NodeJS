@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/santisabb/demo1NodeJS/issues"
   },
-  "homepage": "https://github.com/santisabb/demo1NodeJS#readme"
+  "homepage": "https://github.com/santisabb/demo1NodeJS#readme",
+  "dependencies": {
+    "picocolors": "1.0.0"
+  }
 }
