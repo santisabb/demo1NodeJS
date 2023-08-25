@@ -4,7 +4,8 @@
   "description": "primer proyecto node by santi sabbio",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./primer-api/http.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "picocolors": "1.0.0"
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
     "standard": "17.1.0"
   },
   "eslintConfig": {
