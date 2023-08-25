@@ -1,46 +1,44 @@
-const { statfs } = require('node:fs')
 const fs = require('node:fs/promises')
 const path = require('node:path')
 const pc = require('picocolors')
 
 const folder = process.argv[2] ?? '.'
 
-console.log("y estoo????")
-async function ls (folder){
-    let files
+console.log('y acaaaa')
+async function ls (folder) {
+  let files
+  try {
+    files = await fs.readdir(folder)
+  } catch (error) {
+    console.error(pc.bgRed(`ERROR: noo se pudo leer directorio ${folder}`))
+    process.exit(1)
+  }
+
+  const filePromises = files.map(async file => {
+    const filePath = path.join(file, folder)
+    let fileStats
+
     try {
-        files = await fs.readdir(folder)
+      fileStats = await fs.stat(filePath)
     } catch (error) {
-        console.error(pc.bgRed(`ERROR: noo se pudo leer directorio ${folder}`))
-        process.exit(1)
+      console.error(pc.red(`ERROR: no se pudo leer el archivo ${filePath}`))
+      process.exit(1)
     }
+    const isDir = fileStats.isDirectory()
+    const fileType = isDir ? 'd' : 'f'
+    const fileSize = fileStats.size.toString()
+    const fileMod = fileStats.mtime.toLocaleString()
+    return `${(fileType)} ${(file.padEnd(20))} ${(fileSize.padStart(10))} ${(fileMod)}`
+  })
 
-    const filePromises = files.map(async file =>{
-        const filePath = path.join(file , folder)
-        let fileStats
-
-        try {
-            fileStats = await fs.stat(filePath)
-        } catch (error) {
-            console.error(pc.red(`ERROR: no se pudo leer el archivo ${filePath}`))
-            process.exit(1)
-        }
-        const isDir = fileStats.isDirectory()
-        const fileType = isDir ? 'd' : 'f'
-        const fileSize = fileStats.size.toString()
-        const fileMod = fileStats.mtime.toLocaleString()
-        return `${(fileType)} ${(file.padEnd(20))} ${(fileSize.padStart(10))} ${(fileMod)}`
-    })
-    
-    const fileInfo = await Promise.all(filePromises)
-  fileInfo.forEach(fileInfo => {console.log(fileInfo)})
+  const fileInfo = await Promise.all(filePromises)
+  fileInfo.forEach(fileInfo => { console.log(fileInfo) })
 }
 
 ls(folder)
 
 /*
 primer resultado:
-
 
 PS C:\Users\santi\demo1NodeJS\mjs> node ls-advanced.js
 y estoo????
