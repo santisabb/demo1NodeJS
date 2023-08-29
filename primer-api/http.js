@@ -1,6 +1,6 @@
 const http = require('node:http')
 
-const desiredPort = process.env.PORT ?? 8081
+const desiredPort = process.env.PORT ?? 8080
 
 const processRequest = (req, res) => {
   if (req.url === '/') {
