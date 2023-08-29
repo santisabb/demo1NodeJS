@@ -1,5 +1,7 @@
 const http = require('node:http')
 
+const ditto = require('ditto.js')
+
 const processRequest = (req, res) => {
   const { method, url } = req
   switch (method) {
