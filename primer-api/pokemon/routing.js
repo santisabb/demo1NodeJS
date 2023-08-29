@@ -1,15 +1,15 @@
 const http = require('node:http')
 
-const ditto = require('./ditto.js')
+const pokes = require('./pokemones.js')
 
 const processRequest = (req, res) => {
   const { method, url } = req
   switch (method) {
     case 'GET':
       switch (url) {
-        case '/pokemon/ditto':
+        case '/pokemon/pokemones':
           res.setHeader('Content-Type', 'application/json; charset=utf-8')
-          return res.end(JSON.stringify(ditto))
+          return res.end(JSON.stringify(pokes))
         default:
           res.statusCode = 404
           res.setHeader('Content-Type', 'text/html; charset=utf-8')

@@ -1,5 +1,12 @@
 ### Pedir informacion del pokemon
-GET http://localhost:8081/pokemon/ditto 
+GET http://localhost:8081/pokemones
 ### Crear informacion de un pokemon
 POST http://localhost:8081/pokemon
 Content-Type: application/json
+
+ {
+    "name": "charmander",
+    "type": "fire",
+    "height": 1.2,
+    "weight": 13.6
+ }
