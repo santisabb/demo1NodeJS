@@ -1,1 +1,5 @@
-GET http://localhost: 
+### Pedir informacion del pokemon
+GET http://localhost:8081/pokemon/ditto 
+### Crear informacion de un pokemon
+POST http://localhost:8081/pokemon
+Content-Type: application/json
