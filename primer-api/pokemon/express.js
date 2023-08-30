@@ -22,6 +22,10 @@ app.post('/pokemon', (req, res) => {
   })
 })
 
+app.use((req, res) => {
+  res.status(404).send('<h1>404 not founLA CONCHA DE LA LORA</h1>')
+})
+
 app.listen(port, () => {
   console.log('server listening on port http://localhost:8081')
 })

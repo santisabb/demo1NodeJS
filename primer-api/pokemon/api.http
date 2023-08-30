@@ -1,4 +1,4 @@
-### Pedir informacion del pokemon
+### Pedir informacion del(los) pokemon(es)
 GET http://localhost:8081/pokemones
 ### Crear informacion de un pokemon
 POST http://localhost:8081/pokemon
