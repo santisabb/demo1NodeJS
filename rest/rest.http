@@ -1,0 +1,6 @@
+### aqui muestro todos los discos disponibles
+GET http://localhost:8081/records
+### aqui muestro un disco buscado por nombre
+GET http://localhost:8081/records/La lengua popular
+### muestro discos filtrados por un artista
+GET http://localhost:8081/records?artist=c.r.o

@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Mal de la cabeza",
+        "artist": ["C.R.O"],
+        "yearOut": 2017,
+        "numberSongs": 7,
+        "timePlay": 30.48 
+    },
+    {
+        "name": "La lengua popular",
+        "artist": ["Andres Calamaro"],
+        "yearOut": 2007,
+        "numberSongs": 12,
+        "timePlay": 22.41
+    },
+    {
+        "name": "X 100PRE",
+        "artist": ["Bad Bunny"],
+        "yearOut": 2018,
+        "numberSongs": 15,
+        "timePlay": 53.56
+    },
+    {
+        "name": "Antes de Ameri",
+        "artist": ["Duki"],
+        "yearOut": 2023,
+        "numberSongs": 14,
+        "timePlay": 35.21
+    },
+    {
+        "name": "542",
+        "artist": ["C.R.O"],
+        "yearOut": 2018,
+        "numberSongs": 12,
+        "timePlay": 30.48 
+    },
+    {
+        "name": "Oktubre",
+        "artist": ["Patricio Rey y sus Redonditos de Ricota"],
+        "yearOut": 1986,
+        "numberSongs": 9,
+        "timePlay": 41.08
+    },
+    {
+        "name": "Temor",
+        "artist": ["C.R.O"],
+        "yearOut": 2023,
+        "numberSongs": 9,
+        "timePlay": 29.45 
+    },
+    {
+        "name": "Alta Suciedad",
+        "artist": ["Andres Calamaro"],
+        "yearOut": 1997,
+        "numberSongs": 14,
+        "timePlay": 55.02
+    }
+]
