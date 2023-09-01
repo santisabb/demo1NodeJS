@@ -2,6 +2,7 @@ const express = require('express')
 const rcrds = require('./records.json')
 const app = express()
 const z = require('zod')
+const { validateAlbum } = require('./album.js')
 const port = process.env.PORT ?? 8081
 
 app.disable('x-powered-by')
@@ -26,21 +27,19 @@ app.get('/records/:name', (req, res) => {
 })
 
 app.post('/records', (req, res) => {
-  const {
-    name,
-    artist,
-    yearOut,
-    numberSongs,
-    timePlay
-  } = req.body
+  const result = validateAlbum(req.body)
+
+  if (result.error) {
+    return res.status(400).json({ error: result.error.message })
+  }
 
   const newAlbum = {
-    name,
-    artist,
-    yearOut,
-    numberSongs,
-    timePlay
+    ...result.data
   }
+
+  rcrds.push(newAlbum)
+
+  res.status(201).json(newAlbum)
 })
 
 app.listen(port, () => {
