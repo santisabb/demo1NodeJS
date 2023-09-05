@@ -1,5 +1,6 @@
 const express = require('express')
 const rcrds = require('./records.json')
+const { validateAlbum } = require('./album.js')
 const app = express()
 const port = process.env.PORT ?? 8081
 
@@ -26,20 +27,14 @@ app.get('/records/:name', (req, res) => {
 })
 
 app.post('/records', (req, res) => {
-  const {
-    name,
-    artist,
-    yearOut,
-    numberSongs,
-    timePlay
-  } = req.body
+  const result = validateAlbum(req.body)
+
+  if (!result.success) {
+    return res.status(400).json({ error: JSON.parse(result.error.message) })
+  }
 
   const newAlbum = {
-    name,
-    artist,
-    yearOut,
-    numberSongs,
-    timePlay
+    ...result.data
   }
 
   rcrds.push(newAlbum)

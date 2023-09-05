@@ -9,7 +9,7 @@ POST http://localhost:8081/records
 Content-Type: application/json
 
 {
-    "name": 1,
+    "name": "Leyendas de la noche",
     "artist":["C.R.O"],
     "yearOut": 2021,
     "numberSongs": 7,
