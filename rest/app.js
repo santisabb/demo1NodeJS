@@ -1,6 +1,6 @@
 const express = require('express')
 const rcrds = require('./records.json')
-const { validateAlbum } = require('./album.js')
+const { validateAlbum, validatePartialAlbum } = require('./album.js')
 const app = express()
 const port = process.env.PORT ?? 8081
 
@@ -40,6 +40,30 @@ app.post('/records', (req, res) => {
   rcrds.push(newAlbum)
 
   res.status(201).json(newAlbum)
+})
+
+app.patch('/records/:name', (req, res) => {
+  const result = validatePartialAlbum(req.body)
+
+  if (!result.success) {
+    return res.status(400).json({ error: JSON.parse(result.error.message) })
+  }
+
+  const { name } = req.params
+  const albumIndex = rcrds.findIndex(a => a.name === name)
+
+  if (albumIndex === -1) {
+    return res.status(404).json({ message: 'Album not found :(' })
+  }
+
+  const updateRecord = {
+    ...rcrds[albumIndex],
+    ...result.data
+  }
+
+  rcrds[albumIndex] = updateRecord
+
+  return res.json(updateRecord)
 })
 
 app.listen(port, () => {

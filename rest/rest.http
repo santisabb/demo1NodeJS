@@ -9,9 +9,17 @@ POST http://localhost:8081/records
 Content-Type: application/json
 
 {
-    "name": "Leyendas de la noche",
-    "artist":["C.R.O"],
-    "yearOut": 2021,
+    "name": "JACKBOYS",
+    "artist":["JACKBOYS"],
+    "yearOut": 2018,
     "numberSongs": 7,
-    "timePlay": 18.24
+    "timePlay": 21.22
+}
+
+### aqui actualizo un disco
+PATCH http://localhost:8081/records/JACKBOYS
+Content-Type: application/json
+
+{
+    "artist": ["JACKBOYS", "Travis Scott"]
 }

@@ -14,6 +14,11 @@ function validateAlbum (input) {
   return albumSchema.safeParse(input)
 }
 
+function validatePartialAlbum (input) {
+  return albumSchema.partial().safeParse(input)
+}
+
 module.exports = {
-  validateAlbum
+  validateAlbum,
+  validatePartialAlbum
 }
