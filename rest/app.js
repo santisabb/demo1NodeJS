@@ -1,11 +1,10 @@
 const express = require('express')
 const rcrds = require('./records.json')
 const app = express()
-const z = require('zod')
-const { validateAlbum } = require('./album.js')
 const port = process.env.PORT ?? 8081
 
 app.disable('x-powered-by')
+app.use(express.json())
 
 app.get('/records', (req, res) => {
   const { artist } = req.query
@@ -27,14 +26,20 @@ app.get('/records/:name', (req, res) => {
 })
 
 app.post('/records', (req, res) => {
-  const result = validateAlbum(req.body)
-
-  if (result.error) {
-    return res.status(400).json({ error: result.error.message })
-  }
+  const {
+    name,
+    artist,
+    yearOut,
+    numberSongs,
+    timePlay
+  } = req.body
 
   const newAlbum = {
-    ...result.data
+    name,
+    artist,
+    yearOut,
+    numberSongs,
+    timePlay
   }
 
   rcrds.push(newAlbum)

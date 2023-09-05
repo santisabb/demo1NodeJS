@@ -1,5 +1,4 @@
-[
-    {
+[{
         "name": "Mal de la cabeza",
         "artist": ["C.R.O"],
         "yearOut": 2017,
@@ -54,5 +53,4 @@
         "yearOut": 1997,
         "numberSongs": 14,
         "timePlay": 55.02
-    }
-]
+    }]

@@ -1,6 +1,17 @@
 ### aqui muestro todos los discos disponibles
 GET http://localhost:8081/records
 ### aqui muestro un disco buscado por nombre
-GET http://localhost:8081/records/La lengua popular
+GET http://localhost:8081/records/542
 ### muestro discos filtrados por un artista
 GET http://localhost:8081/records?artist=c.r.o
+### aqui creo un album nuevo
+POST http://localhost:8081/records
+Content-Type: application/json
+
+{
+    "name": 1,
+    "artist":["C.R.O"],
+    "yearOut": 2021,
+    "numberSongs": 7,
+    "timePlay": 18.24
+}

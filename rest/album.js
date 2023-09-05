@@ -10,8 +10,8 @@ const albumSchema = z.object({
   timePlay: z.number().positive()
 })
 
-function validateAlbum (object) {
-  return albumSchema.safeParse(object)
+function validateAlbum (input) {
+  return albumSchema.safeParse(input)
 }
 
 module.exports = {
