@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "primer proyecto node by santi sabbio",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:1": "nodemon ./primer-api/pokemon/express.js",
-    "dev:2": "nodemon ./rest/app.js",
-    "type": "module"
+    "dev:2": "nodemon ./rest/app.js"
   },
   "repository": {
     "type": "git",

@@ -1,11 +1,13 @@
-const express = require('express')
+import express, { json } from 'express'
+import { createRequire } from 'node:module'
+import { validateAlbum, validatePartialAlbum } from './album.js'
+const require = createRequire(import.meta.url)
 const rcrds = require('./records.json')
-const { validateAlbum, validatePartialAlbum } = require('./album.js')
 const app = express()
 const port = process.env.PORT ?? 8081
 
 app.disable('x-powered-by')
-app.use(express.json())
+app.use(json())
 
 app.get('/records', (req, res) => {
   const { artist } = req.query
