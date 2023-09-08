@@ -1,15 +1,13 @@
-import express, { json } from 'express'
+import { Router } from 'express'
+import { validateAlbum, validatePartialAlbum } from '../schemas/album.js'
 import { createRequire } from 'node:module'
-import { validateAlbum, validatePartialAlbum } from './schemas/album.js'
+
 const require = createRequire(import.meta.url)
 const rcrds = require('./records.json')
-const app = express()
-const port = process.env.PORT ?? 8081
 
-app.disable('x-powered-by')
-app.use(json())
+export const recordsRouter = Router()
 
-app.get('/records', (req, res) => {
+recordsRouter.get('/', (req, res) => {
   const { artist } = req.query
   if (artist) {
     const filteredRec = rcrds.filter(
@@ -20,7 +18,7 @@ app.get('/records', (req, res) => {
   res.json(rcrds)
 })
 
-app.get('/records/:name', (req, res) => {
+recordsRouter.get('/:name', (req, res) => {
   const { name } = req.params
   const record = rcrds.find(record => record.name === name)
   if (record) res.json(record)
@@ -28,7 +26,7 @@ app.get('/records/:name', (req, res) => {
   res.status(404).json({ message: 'Not found that name bro' })
 })
 
-app.post('/records', (req, res) => {
+recordsRouter.post('/', (req, res) => {
   const result = validateAlbum(req.body)
 
   if (!result.success) {
@@ -44,7 +42,7 @@ app.post('/records', (req, res) => {
   res.status(201).json(newAlbum)
 })
 
-app.patch('/records/:name', (req, res) => {
+recordsRouter.patch('/:name', (req, res) => {
   const result = validatePartialAlbum(req.body)
 
   if (!result.success) {
@@ -66,8 +64,4 @@ app.patch('/records/:name', (req, res) => {
   rcrds[albumIndex] = updateRecord
 
   return res.json(updateRecord)
-})
-
-app.listen(port, () => {
-  console.log('server listening on port http://localhost:8081')
 })
